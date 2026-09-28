@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DayFlow | Student Dashboard</title>
+    <meta
+      name="description"
+      content="DayFlow is a modern daily student dashboard for tasks, goals, reminders, weather, and smart productivity recommendations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Student Productivity</p>
+          <h1>DayFlow</h1>
+        </div>
+        <div class="topbar-meta">
+          <div class="date-block">
+            <span id="current-date">Loading date...</span>
+          </div>
+          <div class="time-block">
+            <span id="current-time">Loading time...</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero" aria-label="Daily overview">
+        <div>
+          <p id="greeting" class="greeting">Good day!</p>
+          <h2>Your daily student dashboard</h2>
+        </div>
+        <p id="motivational-message" class="motivational-message">
+          Stay focused and take one step at a time.
+        </p>
+      </section>
+
+      <main class="dashboard-grid">
+        <section class="card tasks-card" aria-labelledby="tasks-heading">
+          <div class="card-header">
+            <div>
+              <p class="card-kicker">Plan</p>
+              <h3 id="tasks-heading">Today’s Tasks</h3>
+            </div>
+            <span class="badge" id="task-counter">0/0 done</span>
+          </div>
+
+          <div class="task-input-row">
+            <label class="sr-only" for="task-input">Add a task</label>
+            <input
+              id="task-input"
+              type="text"
+              placeholder="Add a task for today..."
+              maxlength="120"
+            />
+            <button type="button" class="primary-btn" id="add-task-btn">Add Task</button>
+          </div>
+
+          <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+          <div class="progress-panel" aria-label="Task progress">
+            <div class="progress-header">
+              <span>Progress</span>
+              <strong id="progress-percent">0%</strong>
+            </div>
+            <div class="progress-bar">
+              <span id="progress-fill"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card weather-card" aria-labelledby="weather-heading">
+          <div class="card-header">
+            <div>
+              <p class="card-kicker">Local</p>
+              <h3 id="weather-heading">Today’s Weather</h3>
+            </div>
+          </div>
+
+          <div class="weather-search-row">
+            <label class="sr-only" for="city-input">City name</label>
+            <input id="city-input" type="text" placeholder="Enter city name" />
+            <button type="button" class="primary-btn" id="weather-btn">Check Weather</button>
+          </div>
+
+          <div id="weather-error" class="message error-message" role="alert"></div>
+
+          <div class="weather-display" id="weather-display">
+            <div class="weather-icon" id="weather-icon" aria-label="Weather icon">☀️</div>
+            <div class="weather-main">
+              <p class="weather-temp" id="weather-temp">--°C</p>
+              <p class="weather-condition" id="weather-condition">Weather unavailable</p>
+              <p class="weather-location" id="weather-location">Choose a city</p>
+            </div>
+          </div>
+
+          <div class="weather-details">
+            <div>
+              <span>Humidity</span>
+              <strong id="humidity">--</strong>
+            </div>
+            <div>
+              <span>Wind</span>
+              <strong id="wind-speed">--</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card goal-card" aria-labelledby="goal-heading">
+          <div class="card-header">
+            <div>
+              <p class="card-kicker">Focus</p>
+              <h3 id="goal-heading">Daily Goal</h3>
+            </div>
+          </div>
+
+          <label class="sr-only" for="goal-input">Daily goal</label>
+          <input id="goal-input" type="text" placeholder="Finish all my homework" maxlength="120" />
+          <button type="button" class="secondary-btn" id="save-goal-btn">Save Goal</button>
+          <div class="display-box" id="goal-display">No goal set yet. Add one for today.</div>
+        </section>
+
+        <section class="card reminder-card" aria-labelledby="reminder-heading">
+          <div class="card-header">
+            <div>
+              <p class="card-kicker">Memory</p>
+              <h3 id="reminder-heading">Daily Reminder</h3>
+            </div>
+          </div>
+
+          <label class="sr-only" for="reminder-input">Daily reminder</label>
+          <input id="reminder-input" type="text" placeholder="Bring my science project tomorrow" maxlength="160" />
+          <button type="button" class="secondary-btn" id="save-reminder-btn">Save Reminder</button>
+          <div class="display-box highlighted" id="reminder-display">No reminder saved yet.</div>
+        </section>
+
+        <section class="card recommendation-card" aria-labelledby="recommendation-heading">
+          <div class="card-header">
+            <div>
+              <p class="card-kicker">Smart support</p>
+              <h3 id="recommendation-heading">Smart Recommendation</h3>
+            </div>
+          </div>
+          <div id="recommendation-text" class="recommendation-box">
+            Add a task to get your next step recommendation.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
